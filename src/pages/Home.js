@@ -2,6 +2,7 @@ import React from "react";
 import Event from "../components/Event";
 import Navbar from "../components/Navbar";
 import Slider from "../components/Slider";
+import Categories from "../components/Categories";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <Event />
       <Navbar />
       <Slider />
+      <Categories />
     </div>
   );
 };
