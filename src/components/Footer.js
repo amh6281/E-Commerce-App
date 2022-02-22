@@ -103,13 +103,13 @@ const Footer = () => {
       <Center>
         <Title>MENU</Title>
         <List>
-          <ListItem>홈</ListItem>
-          <ListItem>장바구니</ListItem>
-          <ListItem>마이페이지</ListItem>
-          <ListItem>주문목록</ListItem>
-          <ListItem>위시리스트</ListItem>
-          <ListItem>남성 의류</ListItem>
-          <ListItem>악세서리</ListItem>
+          <ListItem>LOGIN</ListItem>
+          <ListItem>REGISTER</ListItem>
+          <ListItem>HOME</ListItem>
+          <ListItem>CART</ListItem>
+          <ListItem>MY PAGE</ListItem>
+          <ListItem>ORDER</ListItem>
+          <ListItem>WISH</ListItem>
         </List>
       </Center>
       <Right>
