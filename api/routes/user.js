@@ -11,11 +11,11 @@ const router = require("express").Router();
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   if (req.body.password) {
     req.body.password = CryptoJS.AES.encrypt(
-      req.body,
-      password,
+      req.body.password,
       process.env.PASS_SEC
     ).toString();
   }
+
   try {
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
@@ -45,7 +45,7 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     const { password, ...others } = user._doc;
-    res.status(200).json({ others });
+    res.status(200).json(others);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -65,15 +65,17 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
 });
 
 //GET USER STATS
-router.get("./stats", verifyTokenAndAdmin, async (req, res) => {
+
+router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
   const date = new Date();
   const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
+
   try {
     const data = await User.aggregate([
       { $match: { createdAt: { $gte: lastYear } } },
       {
         $project: {
-          month: { $month: "$createAt" },
+          month: { $month: "$createdAt" },
         },
       },
       {
