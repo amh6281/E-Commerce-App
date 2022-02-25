@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import Event from "../components/Event";
 import Footer from "../components/Footer";
@@ -6,6 +5,8 @@ import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import Products from "../components/Products";
 import { mobile } from "../responsive";
+import { useLocation } from "react-router";
+import { useState } from "react";
 
 const Container = styled.div``;
 
@@ -39,28 +40,36 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const ProductList = () => {
+  const location = useLocation();
+  const cat = location.pathname.split("/")[2];
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState("newest");
+
+  const handleFilters = (e) => {
+    const value = e.target.value;
+    setFilters({
+      ...filters,
+      [e.target.name]: value,
+    });
+  };
   return (
     <Container>
       <Navbar />
       <Event />
-      <Title>상품</Title>
+      <Title>{cat}</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Detail</FilterText>
-          <Select>
-            <Option disabled selected>
-              Color
-            </Option>
-            <Option>White</Option>
-            <Option>Black</Option>
-            <Option>Gray</Option>
-            <Option>Beige</Option>
-            <Option>Yellow</Option>
+          <Select name="color" onChange={handleFilters}>
+            <Option disabled>Color</Option>
+            <Option>white</Option>
+            <Option>black</Option>
+            <Option>gray</Option>
+            <Option>beige</Option>
+            <Option>yellow</Option>
           </Select>
-          <Select>
-            <Option disabled selected>
-              Size
-            </Option>
+          <Select name="size" onChange={handleFilters}>
+            <Option disabled>Size</Option>
             <Option>XS</Option>
             <Option>S</Option>
             <Option>M</Option>
@@ -70,14 +79,14 @@ const ProductList = () => {
         </Filter>
         <Filter>
           <FilterText>정렬방식</FilterText>
-          <Select>
-            <Option selected>신상품</Option>
-            <Option>낮은 가격</Option>
-            <Option>높은 가격</Option>
+          <Select onChange={(e) => setSort(e.target.value)}>
+            <Option value="newest">신상품</Option>
+            <Option value="asc">낮은 가격</Option>
+            <Option value="desc">높은 가격</Option>
           </Select>
         </Filter>
       </FilterContainer>
-      <Products />
+      <Products cat={cat} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </Container>
