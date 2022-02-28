@@ -1,5 +1,6 @@
 import { Add, Remove } from "@material-ui/icons";
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Event from "../components/Event";
 import Footer from "../components/Footer";
@@ -155,6 +156,7 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
   return (
     <Container>
       <Navbar />
@@ -171,75 +173,56 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            <Product>
-              <ProductDetail>
-                <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
-                <Details>
-                  <ProductName>
-                    <b>상품명:</b>SHOES
-                  </ProductName>
-                  <ProductId>
-                    <b>상품번호:</b>9583213532
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    <b>Size:</b> 250
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>11,000</ProductPrice>
-              </PriceDetail>
-            </Product>
+            {cart.products.map((product) => (
+              <Product>
+                <ProductDetail>
+                  <Image src={product.img} />
+                  <Details>
+                    <ProductName>
+                      <b>상품명:</b>
+                      {product.title}
+                    </ProductName>
+                    <ProductId>
+                      <b>상품번호:</b>
+                      {product._id}
+                    </ProductId>
+                    <ProductColor color={product.color} />
+                    <ProductSize>
+                      <b>Size:</b> {product.size}
+                    </ProductSize>
+                  </Details>
+                </ProductDetail>
+                <PriceDetail>
+                  <ProductAmountContainer>
+                    <Add />
+                    <ProductAmount>{product.quantity}</ProductAmount>
+                    <Remove />
+                  </ProductAmountContainer>
+                  <ProductPrice>
+                    ₩{product.price * product.quantity}
+                  </ProductPrice>
+                </PriceDetail>
+              </Product>
+            ))}
             <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
-                <Details>
-                  <ProductName>
-                    <b>상품명:</b>SHOES
-                  </ProductName>
-                  <ProductId>
-                    <b>상품번호:</b>9583213532
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    <b>Size:</b> 250
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>11,000</ProductPrice>
-              </PriceDetail>
-            </Product>
           </Info>
           <Summary>
             <SummaryTitle>ORDER</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>총 상품금액</SummaryItemText>
-              <SummaryItemPrice>22,000</SummaryItemPrice>
+              <SummaryItemPrice>{cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>총 배송비</SummaryItemText>
-              <SummaryItemPrice>+ 3,500</SummaryItemPrice>
+              <SummaryItemPrice>+ 3500</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>총 할인금액</SummaryItemText>
-              <SummaryItemPrice>- 12,100</SummaryItemPrice>
+              <SummaryItemPrice>- 3500</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>결제예정금액</SummaryItemText>
-              <SummaryItemPrice>= 13,400</SummaryItemPrice>
+              <SummaryItemPrice>{cart.total}</SummaryItemPrice>
             </SummaryItem>
             <Button>전체상품주문</Button>
           </Summary>
