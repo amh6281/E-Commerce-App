@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { login } from "../redux/apiCalls";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
@@ -49,6 +51,10 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
   margin-bottom: 10px;
+  &:disabled {
+    color: green;
+    cursor: not-allowed;
+  }
 `;
 
 const Link = styled.a`
@@ -58,15 +64,39 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
+const Error = styled.span`
+  color: red;
+`;
+
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    login(dispatch, { username, password });
+  };
+
   return (
     <Container>
       <Wrapper>
         <Title>로그인</Title>
         <Form>
-          <Input placeholder="아이디" />
-          <Input placeholder="비밀번호" />
-          <Button>로그인</Button>
+          <Input
+            placeholder="아이디"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            placeholder="비밀번호"
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+          />
+          <Button onClick={handleClick} disabled={isFetching}>
+            로그인
+          </Button>
+          {error && <Error>Something went wrong...</Error>}
           <Link>비밀번호 찾기</Link>
           <Link>가입하기</Link>
         </Form>
