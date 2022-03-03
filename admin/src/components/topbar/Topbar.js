@@ -22,7 +22,7 @@ const Topbar = () => {
             <Settings />
           </div>
           <img
-            src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            src="https://user-images.githubusercontent.com/83646986/156501089-92b5bf79-321b-4868-a8e9-314fa164ff4e.png"
             alt=""
             className="topAvatar"
           />
