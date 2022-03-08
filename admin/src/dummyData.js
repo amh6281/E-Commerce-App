@@ -48,3 +48,87 @@ export const userData = [
     "Active User": 1000,
   },
 ];
+
+export const userRows = [
+  {
+    id: 1,
+    username: "amh",
+    avatar:
+      "https://user-images.githubusercontent.com/83646986/156501089-92b5bf79-321b-4868-a8e9-314fa164ff4e.png",
+    email: "amh6281@naver.com",
+    status: "active",
+    transaction: "120.00",
+  },
+  {
+    id: 2,
+    username: "amh",
+    avatar:
+      "https://user-images.githubusercontent.com/83646986/156501089-92b5bf79-321b-4868-a8e9-314fa164ff4e.png",
+    email: "amh6281@naver.com",
+    status: "active",
+    transaction: "120.00",
+  },
+  {
+    id: 3,
+    username: "amh",
+    avatar:
+      "https://user-images.githubusercontent.com/83646986/156501089-92b5bf79-321b-4868-a8e9-314fa164ff4e.png",
+    email: "amh6281@naver.com",
+    status: "active",
+    transaction: "120.00",
+  },
+  {
+    id: 4,
+    username: "amh",
+    avatar:
+      "https://user-images.githubusercontent.com/83646986/156501089-92b5bf79-321b-4868-a8e9-314fa164ff4e.png",
+    email: "amh6281@naver.com",
+    status: "active",
+    transaction: "120.00",
+  },
+  {
+    id: 5,
+    username: "amh",
+    avatar:
+      "https://user-images.githubusercontent.com/83646986/156501089-92b5bf79-321b-4868-a8e9-314fa164ff4e.png",
+    email: "amh6281@naver.com",
+    status: "active",
+    transaction: "120.00",
+  },
+  {
+    id: 6,
+    username: "amh",
+    avatar:
+      "https://user-images.githubusercontent.com/83646986/156501089-92b5bf79-321b-4868-a8e9-314fa164ff4e.png",
+    email: "amh6281@naver.com",
+    status: "active",
+    transaction: "120.00",
+  },
+  {
+    id: 7,
+    username: "amh",
+    avatar:
+      "https://user-images.githubusercontent.com/83646986/156501089-92b5bf79-321b-4868-a8e9-314fa164ff4e.png",
+    email: "amh6281@naver.com",
+    status: "active",
+    transaction: "120.00",
+  },
+  {
+    id: 8,
+    username: "amh",
+    avatar:
+      "https://user-images.githubusercontent.com/83646986/156501089-92b5bf79-321b-4868-a8e9-314fa164ff4e.png",
+    email: "amh6281@naver.com",
+    status: "active",
+    transaction: "120.00",
+  },
+  {
+    id: 9,
+    username: "amh",
+    avatar:
+      "https://user-images.githubusercontent.com/83646986/156501089-92b5bf79-321b-4868-a8e9-314fa164ff4e.png",
+    email: "amh6281@naver.com",
+    status: "active",
+    transaction: "120.00",
+  },
+];
