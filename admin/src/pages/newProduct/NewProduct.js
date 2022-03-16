@@ -11,18 +11,22 @@ const NewProduct = () => {
           <input type="file" id="file" />
         </div>
         <div className="addProductItem">
-          <label>Name</label>
+          <label>Title</label>
           <input type="text" placeholder="Apple Airpods" />
         </div>
         <div className="addProductItem">
-          <label>Stock</label>
-          <input type="text" placeholder="123" />
+          <label>Description</label>
+          <input type="text" placeholder="description..." />
         </div>
         <div className="addProductItem">
-          <label>Active</label>
-          <select name="active" id="active">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+          <label>Price</label>
+          <input type="text" placeholder="10000" />
+        </div>
+        <div className="addProductItem">
+          <label>Stock</label>
+          <select>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
           </select>
         </div>
         <button className="addProductButton">Create</button>
