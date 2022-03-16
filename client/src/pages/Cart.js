@@ -176,7 +176,7 @@ const Cart = () => {
           tokenId: stripeToken.id,
           amount: 500,
         });
-        navigate("/success", {
+        navigate("/", {
           stripeData: res.data,
           products: cart,
         });
