@@ -12,7 +12,7 @@
   <img src="https://user-images.githubusercontent.com/83646986/160062399-9261943e-bfae-407a-ac21-ca337e6099cf.gif" />
   <h4>상품을 구매할 수 있는 쇼핑몰 페이지입니다.</h4>
 </div>
-<h2>ayment</h2>
+<h2>Payment</h2>
 <div>
   <img src="https://user-images.githubusercontent.com/83646986/160063054-1499a8aa-a5a6-4bd7-9087-de5bcbee39ce.gif" />
   <h4>결제 화면입니다.</h4>
